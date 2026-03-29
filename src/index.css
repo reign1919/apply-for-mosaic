@@ -1,0 +1,353 @@
+/* ═══════════════════════════════════════════════
+   TOKENS — YOUTHFUL MAXIMALIST SCRAPBOOK
+   ═══════════════════════════════════════════════ */
+:root {
+  /* Core palette */
+  --bg:       #fdf6ec;
+  --bg2:      #fff1d6;
+  --bg3:      #ffe9be;
+  --surface:  #ffffff;
+  --surface2: #fff8ef;
+  --surface3: #fff3e3;
+  --text:     #1a0536;
+  --text2:    #4a2d6e;
+  --text3:    #8b6aaa;
+  --border:   rgba(90,20,120,0.12);
+  --border2:  rgba(90,20,120,0.22);
+
+  /* Maximalist palette */
+  --c1:  #ff2d7b;  /* Hot Pink */
+  --c2:  #ff6b35;  /* Tangerine */
+  --c3:  #b8ff00;  /* Neon Lime */
+  --c4:  #6c2bd9;  /* Deep Violet */
+  --c5:  #ffe14d;  /* Sunshine Yellow */
+  --c6:  #00d4ff;  /* Cyan Electric */
+  --c7:  #1a0536;  /* Ink Black-Violet */
+  --c8:  #ff9ee7;  /* Bubblegum Pink */
+  --c9:  #7bffb2;  /* Mint Neon */
+  --c10: #ff4444;  /* Cherry Red */
+
+  --accent:  #ff2d7b;
+  --accent2: #b8ff00;
+
+  --nav-h:     78px;
+  --r:         12px;
+  --r-lg:      20px;
+  --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+  --spring:     0.5s cubic-bezier(0.34,1.56,0.64,1);
+
+  /* Brutalist shadow  (hard, no blur) */
+  --shadow-brutal: 4px 4px 0px var(--c7);
+  --shadow-brutal-sm: 2px 2px 0px var(--c7);
+  --shadow-brutal-lg: 6px 6px 0px var(--c7);
+  --shadow-brutal-accent: 4px 4px 0px var(--accent);
+}
+
+[data-theme="dark"] {
+  --bg:       #0a0418;
+  --bg2:      #120824;
+  --bg3:      #1a0e30;
+  --surface:  #150a28;
+  --surface2: #1e1238;
+  --surface3: #2a1a4a;
+  --text:     #f0e8ff;
+  --text2:    #c8b0e8;
+  --text3:    #8a6eb8;
+  --border:   rgba(180,140,255,0.1);
+  --border2:  rgba(180,140,255,0.2);
+
+  --shadow-brutal: 4px 4px 0px rgba(180,0,255,0.3);
+  --shadow-brutal-sm: 2px 2px 0px rgba(180,0,255,0.3);
+  --shadow-brutal-lg: 6px 6px 0px rgba(180,0,255,0.3);
+  --shadow-brutal-accent: 4px 4px 0px var(--accent);
+}
+
+/* ═══════════════════════════════════════════════
+   RESET
+   ═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Epilogue', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background var(--transition), color var(--transition);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Paper texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 99997;
+  mix-blend-mode: multiply;
+}
+[data-theme="dark"] body::after { opacity: 0.04; mix-blend-mode: overlay; }
+
+h1,h2,h3,h4 { font-family: 'Outfit', sans-serif; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input, textarea, select {
+  font-family: 'Epilogue', sans-serif;
+  background: var(--surface2);
+  border: 2px solid var(--border2);
+  color: var(--text);
+  border-radius: var(--r);
+  padding: 13px 17px;
+  outline: none;
+  width: 100%;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  font-size: 14.5px;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: var(--shadow-brutal-accent);
+}
+select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236c2bd9' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--c1), var(--c4)); border-radius: 4px; border: 2px solid var(--bg2);}
+
+/* ═══════════════════════════════════════════════
+   TYPOGRAPHY — SCRAPBOOK
+   ═══════════════════════════════════════════════ */
+.mono { font-family: 'Epilogue', sans-serif; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.handwritten { font-family: 'Shadows Into Light Two', cursive; }
+.display-font { font-family: 'Outfit', sans-serif; font-weight: 800; }
+
+/* ═══════════════════════════════════════════════
+   LAYOUT UTILS
+   ═══════════════════════════════════════════════ */
+.section    { padding: 100px 0; }
+.container  { max-width: 1220px; margin: 0 auto; padding: 0 28px; }
+
+/* ═══════════════════════════════════════════════
+   SCRAPBOOK TAG STICKER
+   ═══════════════════════════════════════════════ */
+.tag-glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px 6px 12px;
+  border-radius: 6px;
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  color: var(--accent);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-brutal-sm);
+  transform: rotate(-1deg);
+  transition: transform var(--spring);
+}
+.tag-glow:hover { transform: rotate(1deg) scale(1.05); }
+.tag-glow::before {
+  content: '★';
+  font-size: 10px;
+  animation: tagSpin 2s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes tagSpin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+
+/* Legacy .tag */
+.tag {
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.tag::before { content:'—'; display:inline-block; color:var(--accent); font-weight: 700; }
+
+/* ═══════════════════════════════════════════════
+   BUTTONS — CHUNKY STICKER STYLE
+   ═══════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-transform: uppercase;
+  border: 2.5px solid var(--c7);
+}
+.btn:hover { transform: translate(-2px, -2px); }
+.btn:active { transform: translate(1px, 1px); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--c7);
+  box-shadow: var(--shadow-brutal);
+}
+.btn-primary:hover {
+  box-shadow: 6px 6px 0px var(--c7);
+}
+.btn-primary:active { box-shadow: 1px 1px 0px var(--c7); }
+
+.btn-outline {
+  border: 2.5px solid var(--c7);
+  color: var(--text);
+  background: var(--surface);
+  box-shadow: var(--shadow-brutal-sm);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--shadow-brutal-accent);
+}
+
+/* ═══════════════════════════════════════════════
+   PILL TAGS — STICKER STYLE
+   ═══════════════════════════════════════════════ */
+.pill-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+.pill {
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 13px;
+  font-weight: 700;
+  border: 2px solid var(--border2);
+  color: var(--text2);
+  background: var(--surface2);
+  box-shadow: var(--shadow-brutal-sm);
+  transition: all var(--transition);
+  transform: rotate(var(--rot, 0deg));
+}
+.pill:nth-child(odd) { --rot: -1deg; }
+.pill:nth-child(even) { --rot: 1.5deg; }
+.pill:hover { border-color: var(--accent); color: var(--accent); transform: rotate(0deg) scale(1.08); }
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════ */
+.reveal-child, .reveal-block {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.5s cubic-bezier(0.34,1.56,0.64,1),
+              transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+.reveal-child.revealed, .reveal-block.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════
+   PAGE ENTER — STICKER SLAP
+   ═══════════════════════════════════════════════ */
+.page-enter { animation: pageSlap 0.45s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+@keyframes pageSlap {
+  0%   { opacity:0; transform: scale(0.92) rotate(-1deg); }
+  60%  { opacity:1; transform: scale(1.02) rotate(0.5deg); }
+  100% { opacity:1; transform: scale(1) rotate(0deg); }
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION UTILITIES
+   ═══════════════════════════════════════════════ */
+.section-title-centered {
+  font-size: clamp(28px,3.8vw,50px);
+  text-align: center;
+  margin-bottom: 12px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.section-sub {
+  text-align: center;
+  color: var(--text2);
+  margin-bottom: 52px;
+  font-size: 16px;
+  font-family: 'Shadows Into Light Two', cursive;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════
+   SCRAPBOOK DECORATOR PATCHES
+   ═══════════════════════════════════════════════ */
+.tape {
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  background: rgba(255,225,77,0.7);
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  z-index: 5;
+}
+.tape-tl { top: -8px; left: 10px; transform: rotate(-8deg); }
+.tape-tr { top: -8px; right: 10px; transform: rotate(12deg); }
+
+.scrapbook-arrow {
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  position: absolute;
+  transform: rotate(var(--arrow-rot, -6deg));
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════
+   GLOW CARD WITH BRUTALIST HOVER
+   ═══════════════════════════════════════════════ */
+.glow-card {
+  position: relative;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.glow-card:hover {
+  box-shadow: var(--shadow-brutal);
+  transform: translate(-2px, -2px);
+}
+
+/* ═══════════════════════════════════════════════
+   MOSAIC DIVIDER — CHUNKY COLORED BLOCKS
+   ═══════════════════════════════════════════════ */
+.mosaic-divider {
+  display: flex;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  gap: 3px;
+}
+.mosaic-divider span {
+  flex: 1;
+  border-radius: 3px;
+  animation: divBounce 2s ease-in-out infinite;
+}
+.mosaic-divider span:nth-child(1)  { background: var(--c1); animation-delay: 0s; }
+.mosaic-divider span:nth-child(2)  { background: var(--c2); animation-delay: 0.1s; }
+.mosaic-divider span:nth-child(3)  { background: var(--c3); animation-delay: 0.2s; }
+.mosaic-divider span:nth-child(4)  { background: var(--c4); animation-delay: 0.3s; }
+.mosaic-divider span:nth-child(5)  { background: var(--c5); animation-delay: 0.4s; }
+.mosaic-divider span:nth-child(6)  { background: var(--c6); animation-delay: 0.5s; }
+.mosaic-divider span:nth-child(7)  { background: var(--c7); animation-delay: 0.6s; }
+.mosaic-divider span:nth-child(8)  { background: var(--c8); animation-delay: 0.7s; }
+.mosaic-divider span:nth-child(9)  { background: var(--c9); animation-delay: 0.8s; }
+.mosaic-divider span:nth-child(10) { background: var(--c10); animation-delay: 0.9s; }
+@keyframes divBounce { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.4)} }
