@@ -8,17 +8,9 @@ import Footer from "./components/Footer";
 
 export default function App() {
   const [introDone, setIntroDone] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    try { const s = localStorage.getItem("tmf-theme"); if (s) return s; } catch(e) {}
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  });
-
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    try { localStorage.setItem("tmf-theme", theme); } catch(e) {}
-  }, [theme]);
-
-  const toggleTheme = () => setTheme(t => t === "dark" ? "light" : "dark");
+    document.documentElement.setAttribute("data-theme", "dark");
+  }, []);
 
   return (
     <>
@@ -33,7 +25,7 @@ export default function App() {
         transition: "opacity 0.6s ease 0.2s",
         visibility: introDone ? "visible" : "hidden"
       }}>
-        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        <Navbar />
 
         <main className="page-enter">
           <Hero />

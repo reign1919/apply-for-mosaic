@@ -41,27 +41,14 @@
 /* Logo — sticker style */
 .nav-logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; transition: transform var(--spring); }
 .nav-logo:hover { transform: rotate(-3deg) scale(1.06); }
-.logo-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; width: 32px; height: 32px; }
-.logo-tile { border-radius: 4px; animation: logoWobble 2s ease-in-out infinite; animation-delay: calc(var(--i) * 0.3s); }
-.logo-tile:nth-child(1) { background: var(--c1); }
-.logo-tile:nth-child(2) { background: var(--c3); }
-.logo-tile:nth-child(3) { background: var(--c5); }
-.logo-tile:nth-child(4) { background: var(--c4); }
-@keyframes logoWobble { 0%,100%{transform:rotate(0deg) scale(1)} 25%{transform:rotate(8deg) scale(1.1)} 75%{transform:rotate(-5deg) scale(0.95)} }
+.logo-img { width: 42px; height: 42px; object-fit: contain; animation: logoSpin 16s linear infinite; }
+@keyframes logoSpin { 100% { transform: rotate(360deg); } }
 .logo-name { display:block; font-family:'Outfit',sans-serif; font-weight:800; font-size:18px; color:var(--text); line-height:1; }
 .logo-sub  { display:block; font-family:'Shadows Into Light Two', cursive; font-size:10px; color:var(--accent); line-height:1.5; font-weight:700; }
 
 /* Actions */
 .nav-actions { display:flex; align-items:center; gap:10px; }
-.theme-toggle {
-  display:flex; align-items:center; justify-content:center;
-  width: 38px; height: 38px; border-radius: 10px;
-  color: var(--text2); background: var(--surface2);
-  border: 2px solid var(--border2);
-  transition: all var(--spring);
-  box-shadow: var(--shadow-brutal-sm);
-}
-.theme-toggle:hover { color: var(--c5); border-color: var(--c5); transform: rotate(20deg) scale(1.1); box-shadow: 2px 2px 0px var(--c5); }
+
 
 .recruit-badge {
   display: inline-flex;

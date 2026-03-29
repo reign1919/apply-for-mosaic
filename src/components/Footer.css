@@ -36,19 +36,7 @@
   position: relative;
 }
 
-/* Footer logo tiles 3×3 */
-.footer-logo-tiles { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; width:46px; }
-.ft {
-  aspect-ratio:1;
-  border-radius:4px;
-  animation: ftpulse 3s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.2s);
-  border: 1px solid rgba(0,0,0,0.08);
-}
-.ft:nth-child(1){background:var(--c1)} .ft:nth-child(2){background:var(--c2)} .ft:nth-child(3){background:var(--c3)}
-.ft:nth-child(4){background:var(--c5)} .ft:nth-child(5){background:var(--c6)} .ft:nth-child(6){background:var(--c4)}
-.ft:nth-child(7){background:var(--c10)} .ft:nth-child(8){background:var(--c9)} .ft:nth-child(9){background:var(--c7)}
-@keyframes ftpulse { 0%,100%{opacity:1;transform:scale(1) rotate(0deg)} 50%{opacity:0.5;transform:scale(0.85) rotate(5deg)} }
+.footer-logo-img { width: 56px; height: 56px; object-fit: contain; animation: logoSpin 16s linear infinite; margin: 0 auto; display: block; }
 
 .footer-brand h3 { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 20px; margin: 10px 0 6px; text-transform: uppercase; }
 .footer-brand p  { font-family: 'Shadows Into Light Two', cursive; color: var(--text2); font-size: 14px; line-height: 1.7; max-width: 320px; margin: 0 auto 18px; font-weight: 700; }
