@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./CursorTrail.css";
 
 const COLORS = [
@@ -8,6 +8,10 @@ const COLORS = [
 const TRAIL_LEN = 12;
 
 export default function CursorTrail() {
+  const [isDesktop] = useState(() => 
+    typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches
+  );
+
   const cursorRef = useRef(null);
   const posRef    = useRef({ x: -300, y: -300 });
   const smoothRef = useRef({ x: -300, y: -300 });
@@ -15,6 +19,8 @@ export default function CursorTrail() {
   const onLinkRef = useRef(false);
 
   useEffect(() => {
+    if (!isDesktop) return;
+
     const container = document.createElement("div");
     container.className = "cursor-trail-container";
     document.body.appendChild(container);
@@ -104,6 +110,8 @@ export default function CursorTrail() {
       document.body.removeChild(container);
     };
   }, []);
+
+  if (!isDesktop) return null;
 
   return (
     <div ref={cursorRef} className="custom-cursor">
