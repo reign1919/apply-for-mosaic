@@ -35,7 +35,64 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   gap: 20px;
+}
+
+/* DEVREIGN Credit */
+.devreign-credit-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.devreign-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: devreignEntrance 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;
+}
+
+@keyframes devreignEntrance {
+  from { opacity:0; transform:translateY(15px) scale(0.92); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+
+.devreign-credit:hover {
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.devreign-logo {
+  font-size: 16px;
+  font-weight: 400;
+  display: inline-block;
+  animation: pulseGlowIntegral 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlowIntegral {
+  0%, 100% {
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+    transform: scale(1) translateY(0px);
+    color: rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.4);
+    transform: scale(1.1) translateY(-1px);
+    color: #ffffff;
+  }
 }
 
 /* Logo — sticker style */

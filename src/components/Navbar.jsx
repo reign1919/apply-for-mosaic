@@ -22,6 +22,18 @@ export default function Navbar() {
           </span>
         </button>
 
+        <div className="devreign-credit-wrapper">
+          <a 
+            href="https://www.instagram.com/forgd.reign/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="devreign-credit"
+          >
+            <span className="devreign-logo">∫</span>
+            <span className="devreign-text">DEVREIGN</span>
+          </a>
+        </div>
+
         {/* Right side */}
         <div className="nav-actions">
           <span className="recruit-badge">✦ Recruiting Now</span>

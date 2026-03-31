@@ -38,15 +38,6 @@ export default function Hero() {
       </div>
 
       <div className="container hero-inner">
-        <a 
-          href="https://www.instagram.com/forgd.reign/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="devreign-credit"
-        >
-          <span className="devreign-logo">∫</span>
-          <span className="devreign-text">DEVREIGN</span>
-        </a>
         <span className="hero-tag-glow">Recruitment Open — 2026</span>
 
         <h1 className="hero-title">
